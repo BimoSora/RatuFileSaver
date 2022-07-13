@@ -1,80 +1,80 @@
-# RatuFileSaver
-Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara grup.
+# QueenFileSaver
+The bot generates shareable links in Telegram for videos, photos, documents and can be shared in groups.
 <hr>
 </br>
-<a href="https://heroku.com/deploy?template=https://github.com/BimoSora/RatuFileSaver">
+<a href="https://heroku.com/deploy?template=https://github.com/BimoSora/QueenFileSaver">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 </br>
-Ganti tautan dengan template github Anda.
+Replace the link with your github template.
 </br></br>
 <a href="https://youtu.be/zw_ijvhzomI">
-Klik di sini untuk menonton cara meng-host
+Click here to watch how to host
 </a>
 </br></br>
 
-Detail yang diperlukan.</br>
-<code>TOKEN</code> - Dapatkan Token bot dari bot father.</br>
-<code>DOMAIN</code> - Sama dengan nama aplikasi yang Anda masukkan di Heroku.</br>
-<code>botUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.</br>
-<code>DB_URL</code> - Buat akun di https://www.mongodb.com/cloud/atlas , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti "< password >" dengan kata sandi pengguna yang memiliki akses ke DB dan ganti "myFirstDatabase" untuk "RatuMediaFile". Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.</br>
-<b>Tautan DB_URL</b>
+Required details.</br>
+<code>TOKEN</code> - Get bot Token from bot father.</br>
+<code>DOMAIN</code> - Same as the app name you entered in Heroku.</br>
+<code>botUSERNAME</code> - Your bot username without the '@'.</br>
+<code>DB_URL</code> - Create an account at https://www.mongodb.com/cloud/atlas , database name - RatuMediaFile ,collection name - RatuFileBackup.Click Connect and select 'Connect your app'.copy the link and replace "<password >" with the password of the user who has access to the DB and replace "myFirstDatabase" for "RatuMediaFile". If you want to change the database name you want, it's in the config folder.</br>
+<b>DB_URL Link</b>
 
     mongodb+srv://login:password@bot.qnbbq.mongodb.net/database?retryWrites=true&w=majority
 
-<code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).
-<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot). <b>Jika ada tambahan ADMIN1 ADMIN2 dan seterusnya, tulis sesuai contoh yang ada di config Heroku dan tinggal kasih angka di belakangnya</b></br>
+<code>LOG_CHANNEL</code> - create private channel and get channel ID (if you can't pass any channel ID from channel to @getidsbot it might look like -1001234567899).
+<code>ADMIN</code> - Your Account ID (if you can't find it using a bot like @getmyid_bot). <b>If there is an additional ADMIN1 ADMIN2 and so on, write it according to the example in the Heroku config and just put a number behind it</b></br>
 
 <hr>
 
-<h2>Berikut adalah beberapa perintah dan penggunaan admin.</h2>
+<h2>Here are some admin commands and usage.</h2>
 
-~ Bagaimana pengguna melarang, unban dan kick dari bot dan grup.
-<code>/ban</code> userID caption jika ada.</br>
-<code>/banchat</code> userID (pribadi).</br>
+~ How users ban, unban and kick from bots and groups.
+<code>/ban</code> userID caption if any.</br>
+<code>/banchat</code> userID (private).</br>
 <code>/unban</code> userID.</br>
-<code>/unbanchat</code> userID (pribadi).</br>
+<code>/unbanchat</code> userID (private).</br>
 <code>/kick</code> userID.</br>
-<b>Dapatkan UserID dari saluran log.</b></br>
+<b>Get UserID from log channel.</b></br>
 
-~ Bagaimana cara menggunakan pin dan unpin di grup.</br>
-<code>/pin</code> reply ke pesan yang mau di pin.</br>
-<code>/unpin</code> reply ke pesan yang mau di unpin.</br>
+~ How to use pin and unpin in groups.</br>
+<code>/pin</code> reply to the message you want to pin.</br>
+<code>/unpin</code> reply to the message you want to unpin.</br>
 
-~ Bagaimana cara kirim pesan ke pengguna dari grup.</br>
-<code>/send</code> pesan. kirim pesan di grup.</br>
+~ How to send a message to a user from a group.</br>
+<code>/send</code> message. send messages in the group.</br>
 
-<h2>Cara menghapus file dari bot.</h2>
-Anda dapat menghapus file 4 cara.</br>
+<h2>How to delete files from bot.</h2>
+You can delete files 4 ways.</br>
 
-  ⚫ Hapus file individual dengan file_id.
+  Delete individual files with file_id.
   
-  ⚫ Hapus file grup dengan mediaId.
+  Delete group files with mediaId.
   
-  ⚫ Hapus semua file Kirim oleh pengguna.
+  Delete all files Send by user.
   
-  ⚫ Hapus semua file Kirim ke bot.
+  Delete all files Send to bot.
 
 
-~ Hapus file individual dengan file_id.</br>
-<code>/rem</code> file_id. Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log.</br>
+~ Delete individual files with file_id.</br>
+<code>/rem</code> file_id. It will delete files one by one when you provide file_id, get file_id from log channel.</br>
 
-~ Hapus file grup dengan mediaId.</br>
-<code>/remgrp</code> mediaId. Ini akan menghapus media dalam grup, dapatkan mediaId dari saluran log.</br>
+~ Delete group files with mediaId.</br>
+<code>/remgrp</code> mediaId. This will delete the media in the group, get the mediaId from the log channel.</br>
 
-~ Hapus semua file Kirim oleh pengguna.</br>
-<code>/remall</code> userID. Anda dapat menghapus semua file dikirim oleh pengguna tertentu jika pengguna mengirim konten atau spam yang kasar, dapatkan userid dari saluran log.</br>
+~ Delete all files Send by user.</br>
+<code>/remall</code> userID. You can delete all files sent by specific user if user send abusive content or spam get userid from log channel.</br>
 
-~ Hapus semua file Kirim ke B0T.</br>
-<code>/clear</code>. Ini akan menghapus semua file yang dikirim ke bot secara permanen.</br>
+~ Delete all files Send to B0T.</br>
+<code>/clear</code>. This will permanently delete all files sent to the bot.</br>
 
-<h2>Kirim pesan ke pengguna</h2>
+<h2>Send a message to the user</h2>
 
-<code>/broadcast</code>. Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna.
+<code>/broadcast</code>. You can broadcast text messages to your users, messages will be sent from the last joined user to the first joined user to reduce spam. Try not to send too many messages at once if you have a large number of users.
 
-<h2>Cara mengetahui total pengguna bot.</h2>
+<h2>How to find out the total number of bot users.</h2>
 
-<code>/stats</code>. Anda akan mendapatkan total pengguna memulai bot Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil.
+<code>/stats</code>. You will get total users started your bot, real time data will be updated after successful broadcast.
 <hr>
 
-<b>Jika Anda ingin mendukung kami, ikuti kami di GitHub sebagai dukungan.</b>
+<b>If you want to support us, follow us on GitHub for support.</b>
