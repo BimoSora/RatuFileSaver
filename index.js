@@ -82,9 +82,15 @@ const url4 = url2[1];
 
 // inline keyboard
 const inKey = [
-    [{text:'📎 Tautan',callback_data:'POP'}],
-    [{text:'📚 Dokumentasi',callback_data:'DOC'},{text:'🆘 Bantuan',callback_data:'HELP'}],
-    [{text:'💿 Source code',callback_data:'SRC'}],
+    [{text:'📎 LINK',callback_data:'POP'}],
+    [{text:'📚 DOCUMENTATION',callback_data:'DOC'},{text:'🆘 HELP',callback_data:'HELP'}],
+    [{text:'💿 SOURCE CODE',callback_data:'SRC'}],
+    [{text: `${url3}`, url: `${url4}`}]
+];
+
+const inKey2 = [
+    [{text:'📚 DOCUMENTATION',callback_data:'DOC'},{text:'🆘 HELP',callback_data:'HELP'}],
+    [{text:'💿 SOURCE CODE',callback_data:'SRC'}],
     [{text: `${url3}`, url: `${url4}`}]
 ];
 
@@ -182,14 +188,14 @@ bot.start(async(ctx)=>{
                                         parse_mode:'HTML',
                                         disable_web_page_preview: true,
                                         reply_markup:{
-                                            inline_keyboard:inKey
+                                            inline_keyboard:inKey2
                                         }
                                     })
                                     await ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
                                         parse_mode:'HTML',
                                         disable_web_page_preview: true,
                                         reply_markup:{
-                                            inline_keyboard:inKey
+                                            inline_keyboard:inKey2
                                         }
                                     })
                             }
@@ -350,14 +356,14 @@ bot.start(async(ctx)=>{
                                                 parse_mode:'HTML',
                                                 disable_web_page_preview: true,
                                                 reply_markup:{
-                                                    inline_keyboard:inKey
+                                                    inline_keyboard:inKey2
                                                 }
                                             })
                                             await ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
                                                 parse_mode:'HTML',
                                                 disable_web_page_preview: true,
                                                 reply_markup:{
-                                                    inline_keyboard:inKey
+                                                    inline_keyboard:inKey2
                                                 }
                                             })
                                     }
@@ -488,7 +494,7 @@ bot.action('DOC', async(ctx)=>{
         parse_mode: 'HTML',
         reply_markup:{
             inline_keyboard: [
-                [{text:'Kembali',callback_data:'STARTUP'}]
+                [{text:'BACK',callback_data:'STARTUP'}]
             ]
         }
     })
@@ -501,7 +507,7 @@ bot.action('SRC', async(ctx)=>{
         reply_markup:{
             inline_keyboard: [
                 [{text: `💿 HEROKU`, url: `https://bit.ly/3yA6IRA`},{text: `💿 KOMPUTER/VPS`, url: `https://bit.ly/38qaMsS`}],
-                [{text:'Kembali',callback_data:'STARTUP'}]
+                [{text:'BACK',callback_data:'STARTUP'}]
             ]
         }
     })
@@ -514,8 +520,8 @@ bot.action('HELP',async(ctx)=>{
         disable_web_page_preview: true,
         reply_markup:{
             inline_keyboard: [
-                [{text:'🪒 Perintah',callback_data:'COMM'}],
-                [{text:'Kembali',callback_data:'STARTUP'}]
+                [{text:'🪒 COMMAND',callback_data:'COMM'}],
+                [{text:'BACK',callback_data:'STARTUP'}]
             ]
         }
     })
@@ -528,30 +534,52 @@ bot.action('COMM', async(ctx)=>{
         disable_web_page_preview: true,
         reply_markup:{
             inline_keyboard: [
-                [{text:'Kembali',callback_data:'HELP'}]
+                [{text:'BACK',callback_data:'HELP'}]
             ]
         }
     })
 })
 
 bot.action('STARTUP', async(ctx)=>{
+    let str = process.env.ADMIN;
+    let result = str.includes(ctx.from.id);
+
     await ctx.deleteMessage()
-    const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
-    if(!profile || profile.total_count == 0)
-        return await ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
-            parse_mode:'HTML',
-            disable_web_page_preview: true,
-            reply_markup:{
-                inline_keyboard:inKey
-            }
-        })
-        await ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
-            parse_mode:'HTML',
-            disable_web_page_preview: true,
-            reply_markup:{
-                inline_keyboard:inKey
-            }
-        })
+    if(result == true){
+        const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
+        if(!profile || profile.total_count == 0)
+            return await ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
+                parse_mode:'HTML',
+                disable_web_page_preview: true,
+                reply_markup:{
+                    inline_keyboard:inKey
+                }
+            })
+            await ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
+                parse_mode:'HTML',
+                disable_web_page_preview: true,
+                reply_markup:{
+                    inline_keyboard:inKey
+                }
+            })
+    }else{
+        const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
+        if(!profile || profile.total_count == 0)
+            return await ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
+                parse_mode:'HTML',
+                disable_web_page_preview: true,
+                reply_markup:{
+                    inline_keyboard:inKey2
+                }
+            })
+            await ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
+                parse_mode:'HTML',
+                disable_web_page_preview: true,
+                reply_markup:{
+                    inline_keyboard:inKey2
+                }
+            })
+    }
 })
 
 //TEST BOT
