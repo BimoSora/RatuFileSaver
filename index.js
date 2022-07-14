@@ -481,7 +481,7 @@ bot.action('POP', async(ctx)=>{
         parse_mode: 'HTML',
         reply_markup:{
             inline_keyboard: [
-                [{text:'Batal',callback_data:'STARTUP'}]
+                [{text:'❌ CANCEL',callback_data:'STARTUP'}]
             ]
         }
     })
@@ -494,7 +494,7 @@ bot.action('DOC', async(ctx)=>{
         parse_mode: 'HTML',
         reply_markup:{
             inline_keyboard: [
-                [{text:'BACK',callback_data:'STARTUP'}]
+                [{text:'🔙 BACK',callback_data:'STARTUP'}]
             ]
         }
     })
@@ -507,7 +507,7 @@ bot.action('SRC', async(ctx)=>{
         reply_markup:{
             inline_keyboard: [
                 [{text: `💿 HEROKU`, url: `https://bit.ly/3yA6IRA`},{text: `💿 KOMPUTER/VPS`, url: `https://bit.ly/38qaMsS`}],
-                [{text:'BACK',callback_data:'STARTUP'}]
+                [{text:'🔙 BACK',callback_data:'STARTUP'}]
             ]
         }
     })
@@ -521,7 +521,7 @@ bot.action('HELP',async(ctx)=>{
         reply_markup:{
             inline_keyboard: [
                 [{text:'🪒 COMMAND',callback_data:'COMM'}],
-                [{text:'BACK',callback_data:'STARTUP'}]
+                [{text:'🔙 BACK',callback_data:'STARTUP'}]
             ]
         }
     })
@@ -534,7 +534,7 @@ bot.action('COMM', async(ctx)=>{
         disable_web_page_preview: true,
         reply_markup:{
             inline_keyboard: [
-                [{text:'BACK',callback_data:'HELP'}]
+                [{text:'🔙 BACK',callback_data:'HELP'}]
             ]
         }
     })
